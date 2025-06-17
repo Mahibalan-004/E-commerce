@@ -28,6 +28,13 @@ const LoginScreen = ({ location, history }) => {
     e.preventDefault()
     dispatch(login(email, password))
   }
+useEffect(() => {
+  if (userInfo && userInfo.isAdmin) {
+    history.push('/admin/userlist')  // Admin redirect
+  } else if (userInfo) {
+    history.push('/')
+  }
+}, [history, userInfo])
 
   return (
     <FormContainer>

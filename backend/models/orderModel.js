@@ -67,7 +67,6 @@ const orderSchema = mongoose.Schema(
     deliveredAt: {
       type: Date,
     },
-    // ✅ Correctly placed paymentStatus field:
     paymentStatus: {
       type: String,
       enum: ['Not Paid', 'Pending Manual Approval', 'Paid'],
@@ -79,6 +78,6 @@ const orderSchema = mongoose.Schema(
   }
 )
 
-const Order = mongoose.model('Order', orderSchema)
+const Order = mongoose.models.Order || mongoose.model('Order', orderSchema)
 
 export default Order

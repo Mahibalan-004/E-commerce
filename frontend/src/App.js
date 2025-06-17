@@ -19,6 +19,8 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
+import AdminRoute from './components/adminroute'  // You'll create this
+
 
 const App = () => {
   const [darkMode, ] = useState(false)
@@ -58,6 +60,9 @@ const App = () => {
             <Route path='/admin/productlist/:pageNumber' component={ProductListScreen} exact />
             <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
             <Route path='/admin/orderlist' component={OrderListScreen} />
+            <AdminRoute path='/admin/userlist' component={UserListScreen} />
+            <AdminRoute path='/admin/orderlist' component={OrderListScreen} />
+
           </Switch>
         </Container>
       </main>
