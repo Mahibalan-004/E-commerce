@@ -1,0 +1,16 @@
+/* Default (Light) Theme */
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Dark Theme */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
