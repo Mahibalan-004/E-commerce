@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import Product from './productModel.js'
 
 const orderSchema = mongoose.Schema(
   {
@@ -78,6 +79,7 @@ const orderSchema = mongoose.Schema(
   }
 )
 
+// Prevent OverwriteModelError in ES Modules
 const Order = mongoose.models.Order || mongoose.model('Order', orderSchema)
 
 export default Order

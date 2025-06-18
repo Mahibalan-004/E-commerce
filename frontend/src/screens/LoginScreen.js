@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useHistory } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
+import FormContainer from '../components/FormContainer'
 
-const LoginScreen = ({ location, history }) => {
+const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const location = useLocation()
+  const history = useHistory()
 
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
+  const redirect = new URLSearchParams(location.search).get('redirect') || '/'
 
   useEffect(() => {
     if (userInfo) {
@@ -28,13 +31,6 @@ const LoginScreen = ({ location, history }) => {
     e.preventDefault()
     dispatch(login(email, password))
   }
-useEffect(() => {
-  if (userInfo && userInfo.isAdmin) {
-    history.push('/admin/userlist')  // Admin redirect
-  } else if (userInfo) {
-    history.push('/')
-  }
-}, [history, userInfo])
 
   return (
     <FormContainer>
@@ -52,7 +48,7 @@ useEffect(() => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='password'>
+        <Form.Group controlId='password' className='mt-3'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
@@ -62,7 +58,7 @@ useEffect(() => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='primary' className='mt-3'>
           Sign In
         </Button>
       </Form>

@@ -1,9 +1,10 @@
-import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const AdminRoute = ({ component: Component, ...rest }) => {
-  const { userInfo } = useSelector((state) => state.userLogin)
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   return (
     <Route
@@ -12,11 +13,11 @@ const AdminRoute = ({ component: Component, ...rest }) => {
         userInfo && userInfo.isAdmin ? (
           <Component {...props} />
         ) : (
-          <Redirect to='/login' />
+          <Redirect to="/login" />
         )
       }
     />
-  )
-}
+  );
+};
 
-export default AdminRoute
+export default AdminRoute;
