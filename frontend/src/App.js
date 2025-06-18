@@ -25,12 +25,36 @@ import OrderListScreen from './screens/OrderListScreen';
 
 import AdminRoute from './components/adminroute';
 
+import DoorAnimation from './components/animations/DoorAnimation';
+import HeartAnimation from './components/animations/HeartAnimation';
+
 const App = () => {
+  const [showDoor, setShowDoor] = useState(true);
+  const [showHeart, setShowHeart] = useState(false);
   const [darkMode] = useState(false);
+
+  useEffect(() => {
+    const doorTimer = setTimeout(() => {
+      setShowDoor(false);
+      setShowHeart(true);
+    }, 3000); // Door animation duration
+
+    const heartTimer = setTimeout(() => {
+      setShowHeart(false);
+    }, 6000); // Heart starts after door (3s) and lasts 3s
+
+    return () => {
+      clearTimeout(doorTimer);
+      clearTimeout(heartTimer);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
+
+  if (showDoor) return <DoorAnimation />;
+  if (showHeart) return <HeartAnimation />;
 
   return (
     <Router>

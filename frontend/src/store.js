@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+
 import {
   productListReducer,
   productDetailsReducer,
@@ -10,6 +11,7 @@ import {
   productReviewCreateReducer,
   productTopRatedReducer,
 } from './reducers/productReducers'
+
 import { cartReducer } from './reducers/cartReducers'
 import {
   userLoginReducer,
@@ -20,6 +22,7 @@ import {
   userDeleteReducer,
   userUpdateReducer,
 } from './reducers/userReducers'
+
 import {
   orderCreateReducer,
   orderDetailsReducer,
@@ -28,6 +31,9 @@ import {
   orderListMyReducer,
   orderListReducer,
 } from './reducers/orderReducers'
+
+// 👇 ADD THIS LINE
+import { wishlistReducer } from './reducers/wishlistReducers'
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -51,10 +57,17 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
+
+  // 👇 ADD WISHLIST
+  wishlist: wishlistReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
+  : []
+
+const wishlistItemsFromStorage = localStorage.getItem('wishlistItems')
+  ? JSON.parse(localStorage.getItem('wishlistItems'))
   : []
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -69,6 +82,9 @@ const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
     shippingAddress: shippingAddressFromStorage,
+  },
+  wishlist: {
+    wishlistItems: wishlistItemsFromStorage,
   },
   userLogin: { userInfo: userInfoFromStorage },
 }
