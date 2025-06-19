@@ -1,44 +1,82 @@
-.heart-card {
-  width: 220px;
-  height: 220px;
-  background: linear-gradient(135deg, #ff6b81, #feca57);
-  clip-path: path('M 110 30 C 110 0, 0 0, 0 60 C 0 130, 110 210, 110 210 C 110 210, 220 130, 220 60 C 220 0, 110 0, 110 30 Z');
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  margin: 15px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s;
+.carousel-square-card {
+  width: 260px;
+  height: 260px;
+  background: #fff;
+  border-radius: 20px; /* 🟣 Smooth round */
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 10px auto;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 
-.heart-card:hover {
+.carousel-square-card:hover {
   transform: scale(1.05);
 }
 
-.heart-card-content {
+.carousel-square-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px; /* 🟣 Match card edge */
+}
+
+.carousel-square-caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 0 0 20px 20px;
+}
+
+
+/* -------------------------------------- */
+
+
+
+.heart-card {
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* 🎯 Rounded edge */
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+  margin: 20px auto;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.heart-card:hover {
+  transform: scale(1.04);
+}
+
+.heart-card-content {
+  padding: 18px;
 }
 
 .heart-product-img {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 240px;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 15px 15px 0 0; /* 🎯 Top edges rounded */
 }
 
 .heart-product-name {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 5px;
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
 }
 
 .heart-product-price {
-  font-size: 1.2rem;
+  margin-top: 6px;
+  font-size: 1.3rem;
+  color: #e63946;
   font-weight: bold;
-}
-.bg-dark{
-    background-color: aqua;
 }
