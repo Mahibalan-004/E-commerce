@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import './App.css';
 
+// Core layout
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+// Screens
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -17,31 +19,34 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 
+// Admin Screens
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 
+// Custom Components
 import AdminRoute from './components/adminroute';
-
 import DoorAnimation from './components/animations/DoorAnimation';
 import HeartAnimation from './components/animations/HeartAnimation';
+import HeartBackground from './components/animations/HeartBackground';
 
 const App = () => {
   const [showDoor, setShowDoor] = useState(true);
   const [showHeart, setShowHeart] = useState(false);
-  const [darkMode] = useState(false);
+  const [darkMode] = useState(false); // You can connect this to toggle later
 
+  // Handle entry animations
   useEffect(() => {
     const doorTimer = setTimeout(() => {
       setShowDoor(false);
       setShowHeart(true);
-    }, 3000); // Door animation duration
+    }, 3000);
 
     const heartTimer = setTimeout(() => {
       setShowHeart(false);
-    }, 6000); // Heart starts after door (3s) and lasts 3s
+    }, 6000);
 
     return () => {
       clearTimeout(doorTimer);
@@ -49,15 +54,18 @@ const App = () => {
     };
   }, []);
 
+  // Optional: dark mode class toggling
   useEffect(() => {
     document.body.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
 
+  // Entry animations
   if (showDoor) return <DoorAnimation />;
   if (showHeart) return <HeartAnimation />;
 
   return (
     <Router>
+      <HeartBackground /> {/* ❤️ Full background hearts */}
       <Header />
       <main className='py-3'>
         <Container>

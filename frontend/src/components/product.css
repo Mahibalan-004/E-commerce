@@ -1,0 +1,44 @@
+.heart-card {
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, #ff6b81, #feca57);
+  clip-path: path('M 110 30 C 110 0, 0 0, 0 60 C 0 130, 110 210, 110 210 C 110 210, 220 130, 220 60 C 220 0, 110 0, 110 30 Z');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  margin: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.heart-card:hover {
+  transform: scale(1.05);
+}
+
+.heart-card-content {
+  padding: 10px;
+}
+
+.heart-product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.heart-product-name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.heart-product-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.bg-dark{
+    background-color: aqua;
+}
